@@ -69,6 +69,7 @@ def bounce(width, height, x, y, angle, maxIter, debug=0):
     angle = angle * math.pi / 180
     iter = 0
     while True:
+        # cast ray to line
         try:
             hit = moveBall(x, y, angle, 0, height, 0, width)
         except ValueError as err:
