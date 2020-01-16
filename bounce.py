@@ -25,8 +25,8 @@ def bounce(width, height, x, y, angle, maxIter, debug=0):
         return round(x, 3), round(y, 3)
 
     def moveBall(x, y, angle, top, bot, lft, rgt):
-        dirx = x + math.cos(angle)
-        diry = y - math.sin(angle)
+        dirx = x + angle[0]
+        diry = y - angle[1]
 
         # Calculate intersections to each side of the rectangle
         # The y-axis is flipped, btw
@@ -67,6 +67,7 @@ def bounce(width, height, x, y, angle, maxIter, debug=0):
         raise ValueError("Ball went out of bounds!")
 
     angle = angle * math.pi / 180
+    angle = [math.cos(angle), math.sin(angle)]
     iter = 0
     while True:
         try:
@@ -84,14 +85,10 @@ def bounce(width, height, x, y, angle, maxIter, debug=0):
         x = hit[0]
         y = hit[1]
 
-
-        dirx = math.cos(angle)
-        diry = math.sin(angle)
         if hit[0] == 0 or hit[0] == width:
-            diry *= -1
+            angle[0] *= -1
         if hit[1] == 0 or hit[1] == height:
-            dirx *= -1
-        angle = math.atan2(diry, dirx) + math.pi
+            angle[1] *= -1
 
         if iter >= maxIter:
             print("At", hit, "after", iter, "bounces")
