@@ -81,10 +81,11 @@ def bounce(width, height, x, y, angle, maxIter, debug=0):
             print(hit, "after", iter, "bounces")
             break
         
-        #Initialize next 
+        # Put ball at new position
         x = hit[0]
         y = hit[1]
 
+        # Reflect ball's "velocity"
         if hit[0] == 0 or hit[0] == width:
             angle[0] *= -1
         if hit[1] == 0 or hit[1] == height:
