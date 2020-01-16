@@ -101,6 +101,6 @@ def bounce(width, height, x, y, angle, maxIter, debug=0):
 a = sys.argv[1:]
 j = 0
 for i in a:
-    a[j] = int(i)
+    a[j] = float(i)
     j += 1
 bounce(a[0], a[1], a[2], a[3], a[4], a[5], a[6])
